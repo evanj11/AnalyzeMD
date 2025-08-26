@@ -1,0 +1,63 @@
+<BundleInfo name="ChimeraX-AmberMD"
+        version="0.1" package="amber_md"
+        minSessionVersion="1" maxSessionVersion="1">
+  <Author>Evan Jones</Author>
+  <Email>evan.r.jones-1@ou.edu</Email>
+  <URL>https://www.rbvi.ucsf.edu/chimerax/</URL>
+  
+  <Synopsis>Read AMBER NetCDF trajectories and compute MD statistics (RMSD, RMSF, Rg)</Synopsis>
+  <Description>
+    Provides a command and a graphical tool to analyze Amber MD NetCDF trajectories:
+    RMSD, RMSF, and radius of gyration. Includes a file reader for .nc trajectories.
+  </Description>
+
+  <Classifiers>
+    <ChimeraXClassifier>ChimeraX :: Command :: mdstats :: AnalyzeMD :: Compute RMSF, RMSD, or RadG</ChimeraXClassifier>
+    <ChimeraXClassifier>ChimeraX :: Tool :: Simulation Characterization :: AnalyzeMD :: Open GUI to compute MD statistics</ChimeraXClassifier>
+    <ChimeraXClassifier>ChimeraX :: Tool :: Geometry Analysis :: AnalyzeMD :: Open GUI to calculate distances across simulations</ChimeraXClassifier>
+    <ChimeraXClassifier>ChimeraX :: Tool :: Markov State Model :: AnalyzeMD :: Open GUI to calculate Markov State Models</ChimeraXClassifier>
+    <ChimeraXClassifier>ChimeraX :: Tool :: Normal Mode Wizard :: AnalyzeMD :: Display normal mode analysis vectors onto PDB</ChimeraXClassifier>
+  </Classifiers>
+
+  <Categories>MD, Analysis</Categories>
+
+  <!-- Register command-->
+  <Provider name="mdstats"
+        manager="commands"
+        module="mdstats"
+        function="register_command"
+        synopsis="Compute RMSD, RMSF, and radius of gyration from MD trajectory."/>
+
+  <!-- Register GUI tool-->
+  <Provider name="MD Characterization"
+        manager="tools"
+        module="mdcharact"
+        function="tool_start"
+        synopsis="Dockable GUI for trajectory analysis and plotting."/>
+
+  <!-- Register file reader-->
+  <Provider name="Amber NetCDF"
+        manager="open command"
+        module="io_nc"
+        function="register_open_info"
+        suffixes=".nc"
+        category="Amber MD"
+        synopsis="Read Amber NetCDF trajectory files."/>
+  
+  <!--open_info suffixes=".parm7,.prmtop,.nc"
+           command="open_amber"
+           category="Amber MD"
+           multiple="true"
+           /-->
+  
+  <Dependencies>
+    <Dependency name="ChimeraX-Core" version="&gt;=1.3, &lt;=1.11"/>
+    <PythonModule name="mdtraj"/>
+    <PythonModule name="pytraj"/>
+    <PythonModule name="pyemma"/>
+    <PythonModule name="matplotlib"/>
+    <PythonModule name="numpy"/>
+  </Dependencies>
+
+</BundleInfo>
+

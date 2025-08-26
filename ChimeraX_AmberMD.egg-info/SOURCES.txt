@@ -1,0 +1,15 @@
+ChimeraX_AmberMD.egg-info/PKG-INFO
+ChimeraX_AmberMD.egg-info/SOURCES.txt
+ChimeraX_AmberMD.egg-info/dependency_links.txt
+ChimeraX_AmberMD.egg-info/requires.txt
+ChimeraX_AmberMD.egg-info/top_level.txt
+src/__init__.py
+src/amber_reader.py
+src/cmd.py
+src/io_nc.py
+src/io_nmd.py
+src/mdcharact.py
+src/mddist.py
+src/mdmsm.py
+src/mdnmwiz.py
+src/mdstats.py

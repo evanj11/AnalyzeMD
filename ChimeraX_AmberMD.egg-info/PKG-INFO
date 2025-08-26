@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: ChimeraX-AmberMD
+Version: 0.1
+Summary: Read AMBER NetCDF trajectories and compute MD statistics (RMSD, RMSF, Rg)
+Home-page: https://www.rbvi.ucsf.edu/chimerax/
+Author: Evan Jones
+Author-email: evan.r.jones-1@ou.edu
+Classifier: Framework :: ChimeraX
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Environment :: MacOS X :: Aqua
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Environment :: X11 Applications
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: POSIX :: Linux
+Classifier: ChimeraX :: Bundle ::  :: 1,1 :: amber_md ::  :: 
+Classifier: ChimeraX :: Command :: mdstats :: AnalyzeMD :: Compute RMSF, RMSD, or RadG
+Classifier: ChimeraX :: Tool :: Simulation Characterization :: AnalyzeMD :: Open GUI to compute MD statistics
+Classifier: ChimeraX :: Tool :: Geometry Analysis :: AnalyzeMD :: Open GUI to calculate distances across simulations
+Classifier: ChimeraX :: Tool :: Markov State Model :: AnalyzeMD :: Open GUI to calculate Markov State Models
+Classifier: ChimeraX :: Tool :: Normal Mode Wizard :: AnalyzeMD :: Display normal mode analysis vectors onto PDB
+Requires-Python: >=3.7
+Requires-Dist: ChimeraX-Core<=1.11,>=1.3
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+Provides a command and a graphical tool to analyze Amber MD NetCDF trajectories:
+    RMSD, RMSF, and radius of gyration. Includes a file reader for .nc trajectories.
