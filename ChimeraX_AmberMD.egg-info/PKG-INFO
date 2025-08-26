@@ -24,12 +24,14 @@ Classifier: ChimeraX :: Tool :: Geometry Analysis :: AnalyzeMD :: Open GUI to ca
 Classifier: ChimeraX :: Tool :: Markov State Model :: AnalyzeMD :: Open GUI to calculate Markov State Models
 Classifier: ChimeraX :: Tool :: Normal Mode Wizard :: AnalyzeMD :: Display normal mode analysis vectors onto PDB
 Requires-Python: >=3.7
+License-File: LICENSE
 Requires-Dist: ChimeraX-Core<=1.11,>=1.3
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier
 Dynamic: description
 Dynamic: home-page
+Dynamic: license-file
 Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary

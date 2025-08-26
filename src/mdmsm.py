@@ -7,7 +7,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import mdtraj as md
 import numpy as np
-from deeptime.decomposition import TICA
+from deeptime.decomposition import TICA, VAMP
 from deeptime.clustering import KMeans
 from deeptime.markov.msm import MaximumLikelihoodMSM
 from deeptime.markov import pcca
@@ -55,7 +55,7 @@ class AmberMSMTool(ToolInstance):
         # Analysis type
         self.combo_label = QLabel("Features:")
         self.combo = QComboBox()
-        self.combo.addItems(["Phi-Psi", "RMSD-RadG"])
+        self.combo.addItems(["RMSD-RadG", "Phi-Psi"])
         entry_layout.addWidget(self.combo_label, 3, 0)
         entry_layout.addWidget(self.combo, 3, 1)
 
@@ -152,17 +152,21 @@ class AmberMSMTool(ToolInstance):
         
         self.session.logger.warning(f"{features}")
 
-        tica = TICA(lagtime=10, dim=5)   # adjust lagtime
+        tica = TICA(lagtime=5, dim=15)   # adjust lagtime
         tica_data = tica.fit_transform(features)
+
+#        vamp = VAMP(lagtime=5)
+#        tica_data = vamp.fit_transform(features)
 
         if self.number_micstates.text().strip():
             n_clusters = int(self.number_micstates.text().strip())
         else:
-            n_clusers = 100
+            n_clusers = traj.n_frames / 1000
 
-        kmeans = KMeans(n_clusters=n_clusters, max_iter=100)
+        kmeans = KMeans(n_clusters=n_clusters, max_iter=500)
         clustering = KMeans(n_clusters=n_clusters).fit(tica_data).fetch_model()
         dtrajs = clustering.transform(tica_data)
+        
         msm = MaximumLikelihoodMSM().fit(dtrajs, lagtime=1).fetch_model()
 
         m = int(self.number_macstates.text().strip())
@@ -170,7 +174,7 @@ class AmberMSMTool(ToolInstance):
         T = msm.transition_matrix              # (n_microstates x n_microstates)
         pi = msm.stationary_distribution       # stationary distribution
 
-        pcca = msm.pcca(n_metastable_sets=2)
+        pcca = msm.pcca(n_metastable_sets=m)
         
         memberships = pcca.memberships         # shape (n_microstates, m)
 

@@ -1,3 +1,5 @@
+LICENSE
+README.md
 ChimeraX_AmberMD.egg-info/PKG-INFO
 ChimeraX_AmberMD.egg-info/SOURCES.txt
 ChimeraX_AmberMD.egg-info/dependency_links.txt
