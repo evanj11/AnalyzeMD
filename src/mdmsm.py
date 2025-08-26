@@ -204,12 +204,14 @@ class AmberMSMTool(ToolInstance):
         macro_of_frame = np.array(state_to_macro[dtrajs])  # (n_frames,)
         macro_data = [projected_data[macro_of_frame == i] for i in range(m)]
         
-        A = [0]   # index or set of macrostates
-        B = [m]
+        macroA = 0
+        macroB = m-1
+        A = np.where(state_to_macro == macroA)[0]   # index or set of macrostates
+        B = np.where(state_to_macro == macroB)[0]
 
         #tpt_result = tpt(msm.transition_matrix, msm.stationary_distribution, A, B)
         flux = msm.reactive_flux(A, B)
-        paths, capacities = flux.pathways(fraction=.8, maxiter=1000)
+        paths, capacities = flux.pathways(fraction=.5, maxiter=1000)
         best_path = paths[0]       # list of state indices (microstates or macrostates depending on definition)
         best_capacity = capacities[0]
         state_coords = []
@@ -224,7 +226,7 @@ class AmberMSMTool(ToolInstance):
             im = ax.scatter(data[:, 0], data[:, 1], s=5, color=colors[i], label=f'State {i}', alpha=0.5)    
         
         state_coords = np.array(state_coords)
-        ax.plot(state_coords[:,0], state_coords[:,1], '-x', color='black', lw=1, markersize=4, label=f"Capacity {best_capacity:.2e}")
+        ax.plot(state_coords[:,0], state_coords[:,1], '-x', color='black', lw=3, markersize=6, label=f"Capacity {best_capacity:.2e}")
 
         ax.set_xlabel("TIC 1")
         ax.set_ylabel("TIC 2")
