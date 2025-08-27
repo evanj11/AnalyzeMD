@@ -2,7 +2,14 @@
 ChimeraX plug-in for analysis of molecular dynamics simulations
 
 ## Install
-To install the AnalyzeMD plug-in for ChimeraX, you first must install the dependencies:
+First, clone the repository to local computer:
+
+```
+git clone https://github.com/evanj11/AnalyzeMD.git
+```
+
+
+To install the AnalyzeMD plug-in for ChimeraX, you must install the dependencies:
 - For MacOS/Linux CLI
   
   ```
