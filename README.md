@@ -21,7 +21,7 @@ To install the AnalyzeMD plug-in for ChimeraX, you must install the dependencies
 - For Windows PowerShell
   
   ```
-  & "C:\Program Files\ChimeraX\bin\ChimeraX.exe" -m pip install mdtraj deeptime scikit-learn parmed
+  & "C:\Program Files\ChimeraX\bin\python.exe" -m pip install mdtraj deeptime scikit-learn parmed
   ```
   
   and after successful installation of dependencies, within ChimeraX:
