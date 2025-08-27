@@ -9,23 +9,8 @@ git clone https://github.com/evanj11/AnalyzeMD.git
 ```
 
 
-To install the AnalyzeMD plug-in for ChimeraX, you must install the dependencies:
-- For MacOS/Linux CLI
+To install the AnalyzeMD plug-in for ChimeraX, enter this within ChimeraX's CLI
   
-  ```
-  export CHIMERAX_EXE=/path/to/chimerax
-  ${CHIMERAX_EXE} -m pip install mdtraj deeptime scikit-learn parmed
-  bash gen_bundle.sh
-  ```
- 
-- For Windows PowerShell
-  
-  ```
-  & "C:\Program Files\ChimeraX\bin\python.exe" -m pip install mdtraj deeptime scikit-learn parmed
-  ```
-  
-  and after successful installation of dependencies, within ChimeraX:
-
   ```
   devel install PATH_TO_SOURCE_CODE_FOLDER
   ```
