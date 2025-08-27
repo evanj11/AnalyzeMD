@@ -26,8 +26,8 @@ To install the AnalyzeMD plug-in for ChimeraX, you first must install the depend
 ## Usage
 AnalyzeMD is used to automate several beginning-stages analysis steps for Molecular Dynamics Simulations and includes four modules:
 1. **Simulation Characterization**
-  - Allows for the calculation of RMSD/RMSF/RadG across the simulation on the whole protein or a specified selection $^\ast$
-  - Can generate the Free Energy Landscape (FEL) of a given selection with an option to input the temperature for ΔG determination
+  - Allows for the calculation of RMSD/RMSF/RadG across the simulation on the whole protein or a specified $selection^\ast$
+  - Can generate the Free Energy Landscape (FEL) of a given selection with an option to input the temperature for $^\deltaG$ determination
   - Can calculate pairwise graphs such as RMSD, Principal Component Analysis (first two PCs), and Dynamic Cross Correlation Matrices
 2. **Geometry Analysis**
   - Plots the distance between two selected atoms or the angle between three selected atoms across the simulation
@@ -37,7 +37,7 @@ AnalyzeMD is used to automate several beginning-stages analysis steps for Molecu
   - Can be limited to the currently-selected atoms
 4. **Markov State Models**
   - Utilizes either RMSD/RadG or Phi-Psi couples to determine discreet kinetic states
-  - User can input the number of microstates to perform KMeans clustering on $^\dagger$ and the number of macrostates that PCCA+ coarse-grains the microstates into $^\ddagger$
+  - User can input the number of microstates to perform KMeans clustering $on^\dagger$ and the number of macrostates that PCCA+ coarse-grains the microstates $into^\ddagger$
   - The reactive flux path is then drawn over the PCCA+ macrostates to illustrate a potential path traveled
 
 $^\ast$ All `AnalyzeMD` functions support selecting specific atoms on the model and using that as the selection<br />
