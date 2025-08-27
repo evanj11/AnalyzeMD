@@ -52,11 +52,12 @@
   
   <Dependencies>
     <Dependency name="ChimeraX-Core" version="&gt;=1.3, &lt;=1.11"/>
-    <PythonModule name="mdtraj"/>
-    <PythonModule name="pytraj"/>
-    <PythonModule name="pyemma"/>
-    <PythonModule name="matplotlib"/>
-    <PythonModule name="numpy"/>
+    <Dependency name="mdtraj"/>
+    <Dependency name="pytraj"/>
+    <Dependency name="pyemma"/>
+    <Dependency name="matplotlib"/>
+    <Dependency name="numpy"/>
+    <Dependency name="parmed"/>
   </Dependencies>
 
 </BundleInfo>
