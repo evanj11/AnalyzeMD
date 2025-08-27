@@ -41,29 +41,40 @@ class AmberMDTool(ToolInstance):
         entry_layout.addWidget(self.parm_label, 1, 0)
         entry_layout.addWidget(self.parm_name, 1, 1)
         entry_layout.addWidget(btn_parm_file, 1, 2)
+        layout.addLayout(entry_layout)
 
-        self.sel_label = QLabel("Selection")
+        param_layout = QGridLayout()
+
+        self.sel_label = QLabel("Selection:")
         self.sel_entry = QLineEdit()
-        self.sel_entry.setPlaceholderText("default protein, choose CA, backbone, etc.")
-        entry_layout.addWidget(self.sel_label, 2, 0)
-        entry_layout.addWidget(self.sel_entry, 2, 1)
+        self.sel_entry.setPlaceholderText("default protein")
+        param_layout.addWidget(self.sel_label, 0, 0)
+        param_layout.addWidget(self.sel_entry, 0, 1)
 
-        self.play_btn = QPushButton("Play")
-        self.play_btn.clicked.connect(self.play)
-        entry_layout.addWidget(self.play_btn, 2, 2)
+        #self.play_btn = QPushButton("Play")
+        #self.play_btn.clicked.connect(self.play)
+        #entry_layout.addWidget(self.play_btn, 2, 2)
+
+        self.stride = QLineEdit()
+        self.stride.setPlaceholderText("default is 1")
+        self.stride_label = QLabel("Stride:")
+        param_layout.addWidget(self.stride_label, 0, 2)
+        param_layout.addWidget(self.stride, 0, 3)
+        layout.addLayout(param_layout)
 
         # Analysis type
+        anal_layout = QGridLayout()
         self.combo_label = QLabel("Analysis:")
         self.combo = QComboBox()
         self.combo.addItems(["RMSD", "RMSF", "RadG"])
-        entry_layout.addWidget(self.combo_label, 3, 0)
-        entry_layout.addWidget(self.combo, 3, 1)
+        anal_layout.addWidget(self.combo_label, 3, 0)
+        anal_layout.addWidget(self.combo, 3, 1)
+        layout.addLayout(anal_layout)
 
         #self.pause_btn = QPushButton("Pause")
         #self.pause_btn.clicked.connect(self.pause)
         #entry_layout.addWidget(self.pause_btn, 3, 2)
 
-        layout.addLayout(entry_layout)
 
         # Free energy option
         self.free_energy = QCheckBox("Calculate Free Energy")
@@ -176,7 +187,12 @@ class AmberMDTool(ToolInstance):
         fe_flag = self.free_energy.isChecked()
         pairwise_flag = self.pairwise.isChecked()
 
-        traj = md.load(self.trajfile, top=self.top)
+        if self.stride.text().strip():
+            stride = int(self.stride.text().strip())
+        else:
+            stride = 1
+
+        traj = md.load(self.trajfile, stride=stride, top=self.top)
         sel_atoms = selected_atoms(self.session)
 
         if len(sel_atoms) > 0:
@@ -198,7 +214,7 @@ class AmberMDTool(ToolInstance):
             values_a = values * 10
             ax.plot(values_a)
             ax.set_xlabel("Frame")
-            ax.set_ylabel("RMSD (nm)")
+            ax.set_ylabel("RMSD (Å)")
             ax.set_title("RMSD over time")
 
         elif stat == "RMSF":
@@ -268,10 +284,10 @@ class AmberMDTool(ToolInstance):
                 rmsd_matrix = np.zeros((n_frames, n_frames))
 
                 for i in range(n_frames):
-                    rmsd_matrix[i, :] = md.rmsd(traj_slice, traj_slice, i)
+                    rmsd_matrix[i, :] = md.rmsd(traj_slice, traj_slice, i) * 10
 
                 im = ax.imshow(rmsd_matrix, cmap="viridis", origin="lower")
-                self.figure.colorbar(im, ax=ax, label="RMSD (nm)")
+                self.figure.colorbar(im, ax=ax, label="RMSD (Å)")
                 ax.set_xlabel("Frame")
                 ax.set_ylabel("Frame")
                 ax.set_title("Pairwise RMSD Matrix")
