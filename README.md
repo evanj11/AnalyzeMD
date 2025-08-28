@@ -31,6 +31,9 @@ AnalyzeMD is used to automate several beginning-stages analysis steps for Molecu
   - Utilizes either RMSD/RadG or Phi-Psi couples to determine discreet kinetic states
   - User can input the number of microstates to perform KMeans clustering on<span>$^\dagger$</span> and the number of macrostates that PCCA+ coarse-grains the microstates into<span>$^\ddagger$</span>
   - The reactive flux path is then drawn over the PCCA+ macrostates to illustrate a potential path traveled
+5. **Network Analysis**
+  - The user can add a .txt file with the nodes and edges dictionaries determined through network analysis
+  - The GUI visualizes the network and maps each node and edge to the protein
 
 $^\ast$ All `AnalyzeMD` functions support selecting specific atoms on the model and using that as the selection<br />
 $^\dagger$ As a rule of thumb, the number of microstates should be ~1/1,000 of the number of frames<br />
