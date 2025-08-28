@@ -59,9 +59,6 @@
     <Dependency name="parmed"/>
     <Dependency name="deeptime"/>
     <Dependency name="scikit-learn"/>
-    <Dependency name="jupyter_packaging"/>
-    <Dependency name="versioneer"/>
-    <Dependency name="mdigest"/>
   </Dependencies>
 
 </BundleInfo>
