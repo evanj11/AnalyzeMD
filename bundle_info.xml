@@ -17,6 +17,7 @@
     <ChimeraXClassifier>ChimeraX :: Tool :: Geometry Analysis :: AnalyzeMD :: Open GUI to calculate distances across simulations</ChimeraXClassifier>
     <ChimeraXClassifier>ChimeraX :: Tool :: Markov State Model :: AnalyzeMD :: Open GUI to calculate Markov State Models</ChimeraXClassifier>
     <ChimeraXClassifier>ChimeraX :: Tool :: Normal Mode Wizard :: AnalyzeMD :: Display normal mode analysis vectors onto PDB</ChimeraXClassifier>
+    <ChimeraXClassifier>ChimeraX :: Tool :: Network Analysis :: AnalyzeMD :: Compute and display network analysis</ChimeraXClassifier>
   </Classifiers>
 
   <Categories>MD, Analysis</Categories>
@@ -58,6 +59,9 @@
     <Dependency name="parmed"/>
     <Dependency name="deeptime"/>
     <Dependency name="scikit-learn"/>
+    <Dependency name="jupyter_packaging"/>
+    <Dependency name="versioneer"/>
+    <Dependency name="mdigest"/>
   </Dependencies>
 
 </BundleInfo>

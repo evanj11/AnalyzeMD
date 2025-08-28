@@ -13,5 +13,6 @@ src/io_nmd.py
 src/mdcharact.py
 src/mddist.py
 src/mdmsm.py
+src/mdnetwork.py
 src/mdnmwiz.py
 src/mdstats.py

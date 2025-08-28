@@ -44,5 +44,10 @@ class _AmberMD_API(BundleAPI):
             from .mdmsm import AmberMSMTool
             tool = AmberMSMTool(session, ti.name)
             return tool
+        elif ti.name == "Network Analysis":
+            from .mdnetwork import AmberNetworkTool
+            tool = AmberNetworkTool(session, ti.name)
+            return tool
+
 
 bundle_api = _AmberMD_API()
